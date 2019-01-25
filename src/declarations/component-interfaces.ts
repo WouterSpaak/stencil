@@ -13,7 +13,7 @@ export interface ComponentWillLoad {
    *
    * componentWillLoad will only be called once.
    */
-  componentWillLoad: () => Promise<void> | void;
+  componentWillLoad(): Promise<void> | void;
 }
 
 export interface ComponentDidLoad {
@@ -25,7 +25,7 @@ export interface ComponentDidLoad {
    *
    * componentDidLoad will only be called once.
    */
-  componentDidLoad: () => void;
+  componentDidLoad(): void;
 }
 
 export interface ComponentWillUpdate {
@@ -37,7 +37,7 @@ export interface ComponentWillUpdate {
    *
    * componentWillUpdate is not called on the first render.
    */
-  componentWillUpdate: () => Promise<void> | void;
+  componentWillUpdate(): Promise<void> | void;
 }
 
 export interface ComponentDidUpdate {
@@ -50,7 +50,7 @@ export interface ComponentDidUpdate {
    * componentWillUpdate is not called on the
    * first render.
    */
-  componentDidUpdate: () => void;
+  componentDidUpdate(): void;
 }
 
 export interface ComponentDidUnload {
@@ -58,7 +58,7 @@ export interface ComponentDidUnload {
    * The component did unload and the element
    * will be destroyed.
    */
-  componentDidUnload: () => void;
+  componentDidUnload(): void;
 }
 
 export interface ComponentInstance {
@@ -71,7 +71,7 @@ export interface ComponentInstance {
    *
    * componentWillLoad will only be called once.
    */
-  componentWillLoad?: () => Promise<void> | void;
+  componentWillLoad?(): Promise<void> | void;
 
   /**
    * The component has loaded and has already rendered.
@@ -81,7 +81,7 @@ export interface ComponentInstance {
    *
    * componentDidLoad will only be called once.
    */
-  componentDidLoad?: () => void;
+  componentDidLoad?(): void;
 
   /**
    * The component is about to update and re-render.
@@ -91,7 +91,7 @@ export interface ComponentInstance {
    *
    * componentWillUpdate is not called on the first render.
    */
-  componentWillUpdate?: () => Promise<void> | void;
+  componentWillUpdate?(): Promise<void> | void;
 
   /**
    * The component has just re-rendered.
@@ -102,29 +102,28 @@ export interface ComponentInstance {
    * componentWillUpdate is not called on the
    * first render.
    */
-  componentDidUpdate?: () => void;
+  componentDidUpdate?(): void;
 
   /**
    * The component did unload and the element
    * will be destroyed.
    */
-  componentDidUnload?: () => void;
+  componentDidUnload?(): void;
 
-  render?: () => any;
+  render?(): any;
 
   /**
    * Used to dynamically set host element attributes.
    * Should be placed directly above render()
    */
-  hostData?: () => {
-    class?: {[className: string]: boolean};
+  hostData?(): {
+    class?: { [className: string]: boolean };
     style?: any;
     [attrName: string]: any;
   };
 
   [memberName: string]: any;
 }
-
 
 /**
  * General types important to applications using stencil built components
